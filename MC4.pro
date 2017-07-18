@@ -48,7 +48,8 @@ SOURCES += \
     table7tab.cpp \
     table8tab.cpp \
     table9tab.cpp \
-    table10tab.cpp
+    table10tab.cpp \
+    tablebuttongrid.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -74,7 +75,8 @@ HEADERS += \
     table7tab.h \
     table8tab.h \
     table9tab.h \
-    table10tab.h
+    table10tab.h \
+    tablebuttongrid.h
 
 FORMS += \
         mainwindow.ui

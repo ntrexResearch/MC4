@@ -35,7 +35,7 @@ private:
     DIOTab* dioTab;
     MonitorTab* monitorTab;
     ControlStatusGrid* controlStatusGrid;
-    tableButtonGrid* tableButtonGrid;
+    //tableButtonGrid* tableButtonGrid;
     JogTab* jogTab;
     MotionTab* motionTab;
     TableTab* tableTab[10];

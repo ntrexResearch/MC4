@@ -66,7 +66,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableTabWidget->addTab(tableTab[8]->getWidget(),"9");
     ui->tableTabWidget->addTab(tableTab[9]->getWidget(),"10");
 
-    ui->tableButtonWidget->setLayout(tableButtonWidget->);
+    //ui->tableButtonWidget->setLayout(tableButtonWidget->);
 
     ui->controlStatusWidget->setLayout(controlStatusGrid->getGridLayout());
     ui->controlTabWidget->addTab(jogTab->getWidget(), "Jog");
