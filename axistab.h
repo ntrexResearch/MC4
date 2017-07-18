@@ -33,7 +33,7 @@ public slots:
     void axisButton_clicked(int);
 
 protected:
-    static const int margin = 5;
+    static const int margin = 4;
     static const int space = 5;
 
     int id;
