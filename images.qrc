@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/home.jpg</file>
+        <file>images/minus.jpg</file>
+        <file>images/off.png</file>
+        <file>images/on.png</file>
+        <file>images/play.jpg</file>
+        <file>images/plus.jpg</file>
+        <file>images/arc_ccw.png</file>
+        <file>images/arc_cw.png</file>
+        <file>images/linear.png</file>
+    </qresource>
+</RCC>
