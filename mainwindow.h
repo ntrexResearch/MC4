@@ -10,6 +10,7 @@
 #include "motiontab.h"
 #include "tabletab.h"
 #include "controlstatusgrid.h"
+#include "tablebuttongrid.h"
 
 namespace Ui {
 class MainWindow;
@@ -35,7 +36,7 @@ private:
     DIOTab* dioTab;
     MonitorTab* monitorTab;
     ControlStatusGrid* controlStatusGrid;
-    //tableButtonGrid* tableButtonGrid;
+    TableButtonGrid* tableButtonGrid;
     JogTab* jogTab;
     MotionTab* motionTab;
     TableTab* tableTab[10];

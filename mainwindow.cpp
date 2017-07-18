@@ -14,8 +14,6 @@
 #include "table8tab.h"
 #include "table9tab.h"
 #include "table10tab.h"
-#include <QGroupBox>
-#include <QGridLayout>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -35,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     dioTab = new DIOTab(ui->deviceTabWidget);
     monitorTab = new MonitorTab(ui->deviceTabWidget);
     controlStatusGrid = new ControlStatusGrid(ui->controlTabWidget);
+    tableButtonGrid = new TableButtonGrid(ui->tableTabWidget);
     jogTab = new JogTab(ui->controlTabWidget);
     motionTab = new MotionTab(ui->controlTabWidget);
     tableTab[0] = new Table1Tab(ui->tableTabWidget);
@@ -66,7 +65,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableTabWidget->addTab(tableTab[8]->getWidget(),"9");
     ui->tableTabWidget->addTab(tableTab[9]->getWidget(),"10");
 
-    //ui->tableButtonWidget->setLayout(tableButtonWidget->);
+    ui->tableButtonWidget->setLayout(tableButtonGrid->getGridLayout());
 
     ui->controlStatusWidget->setLayout(controlStatusGrid->getGridLayout());
     ui->controlTabWidget->addTab(jogTab->getWidget(), "Jog");
