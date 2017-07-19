@@ -7,7 +7,6 @@
 #include <QGridLayout>
 #include <QButtonGroup>
 
-
 class TableButtonGrid : public QObject
 {
     Q_OBJECT
@@ -17,10 +16,22 @@ public:
     QGridLayout* getGridLayout();
 
 private:
-//QButtonGroup tableButtonGroup;
+    QButtonGroup tableButtonGroup;
     QGridLayout gridLayout;
-
     QPushButton upPushButton;
+    QPushButton downPushButton;
+    QPushButton addPushButton;
+    QPushButton loadPushButton;
+    QPushButton savePushButton;
+
+signals:
+
+public slots:
+
+    //QPushButton upPushButton;
+    //QPushButton downPushButton;
+    void tableButton_released(int);
+
 };
 
 #endif // TABLEBUTTONGRID_H

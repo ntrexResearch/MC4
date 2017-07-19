@@ -30,7 +30,7 @@
     <property name="spacing">
      <number>0</number>
     </property>
-    <item row="0" column="0">
+    <item row="0" column="1">
      <widget class="QScrollArea" name="scrollArea">
       <property name="widgetResizable">
        <bool>true</bool>
@@ -63,20 +63,47 @@
         <property name="verticalSpacing">
          <number>10</number>
         </property>
-        <item row="1" column="1">
-         <widget class="QGroupBox" name="controlGroupBox">
+        <item row="2" column="0">
+         <widget class="QGroupBox" name="editorGroupBox">
           <property name="title">
-           <string>Control</string>
+           <string>Editor</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout">
+          <layout class="QGridLayout" name="editorGridLayout">
            <property name="leftMargin">
-            <number>5</number>
-           </property>
-           <property name="topMargin">
             <number>0</number>
            </property>
-           <property name="rightMargin">
+           <property name="topMargin">
             <number>5</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QTabWidget" name="editorTabWidget"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="tableGroupBox">
+          <property name="title">
+           <string>Table</string>
+          </property>
+          <layout class="QGridLayout" name="tableGridLayout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>5</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
            </property>
            <property name="bottomMargin">
             <number>0</number>
@@ -85,10 +112,10 @@
             <number>0</number>
            </property>
            <item row="0" column="1">
-            <widget class="QTabWidget" name="controlTabWidget"/>
+            <widget class="QTabWidget" name="tableTabWidget"/>
            </item>
-           <item row="0" column="0">
-            <widget class="QWidget" name="controlStatusWidget" native="true"/>
+           <item row="1" column="1">
+            <widget class="QWidget" name="tableButtonWidget" native="true"/>
            </item>
           </layout>
          </widget>
@@ -120,20 +147,20 @@
           </layout>
          </widget>
         </item>
-        <item row="0" column="0">
-         <widget class="QGroupBox" name="tableGroupBox">
+        <item row="2" column="1">
+         <widget class="QGroupBox" name="controlGroupBox">
           <property name="title">
-           <string>Table</string>
+           <string>Control</string>
           </property>
-          <layout class="QGridLayout" name="tableGridLayout">
+          <layout class="QGridLayout" name="gridLayout">
            <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
             <number>5</number>
            </property>
-           <property name="rightMargin">
+           <property name="topMargin">
             <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>5</number>
            </property>
            <property name="bottomMargin">
             <number>0</number>
@@ -142,39 +169,10 @@
             <number>0</number>
            </property>
            <item row="0" column="1">
-            <widget class="QTabWidget" name="tableTabWidget"/>
+            <widget class="QTabWidget" name="controlTabWidget"/>
            </item>
-           <item row="1" column="1">
-            <widget class="QWidget" name="tableButtonWidget" native="true">
-             <zorder>tableTabWidget</zorder>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QGroupBox" name="editorGroupBox">
-          <property name="title">
-           <string>Editor</string>
-          </property>
-          <layout class="QGridLayout" name="editorGridLayout">
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>5</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
-           <property name="spacing">
-            <number>0</number>
-           </property>
            <item row="0" column="0">
-            <widget class="QTabWidget" name="editorTabWidget"/>
+            <widget class="QWidget" name="controlStatusWidget" native="true"/>
            </item>
           </layout>
          </widget>

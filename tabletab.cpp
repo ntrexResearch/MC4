@@ -5,9 +5,12 @@ TableTab::TableTab(QObject *parent) : Tab(parent)
 {
     QGraphicsDropShadowEffect* gdse = new QGraphicsDropShadowEffect();
 
-    gcodeTableWidget.setRowCount(5);
+    gcodeTableWidget.setRowCount(1);
     gcodeTableWidget.setColumnCount(1);
-    gcodeTableWidget.setItem(0,0, new QTableWidgetItem("Hello"));
+    const QStringList header = QStringList()<<"  ";
+    //const QString header = " ";
+    gcodeTableWidget.setHorizontalHeaderLabels(header);
+   // gcodeTableWidget.setItem(0,0, new QTableWidgetItem("Hello"));
     gcodeTableWidget.setColumnWidth(0,500);//For now
     tableLabel.setFixedSize(60,60);
     tableLabel.setAlignment(Qt::AlignCenter);
@@ -19,3 +22,6 @@ TableTab::TableTab(QObject *parent) : Tab(parent)
 }
 
 
+void TableTab::insertRowTable(){
+    gcodeTableWidget.insertRow(2);
+}

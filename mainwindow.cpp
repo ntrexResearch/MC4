@@ -126,3 +126,10 @@ void MainWindow::updatePollingData(QList<uint32_t> polData)
 {
     dioTab->refreshStatus(polData[9]);
 }
+
+TableTab* MainWindow::getTableTab(int id){
+   if(id < 0 || id > 10)
+       return nullptr;
+   else
+       return tableTab[id];
+ }

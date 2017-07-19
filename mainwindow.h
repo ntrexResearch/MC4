@@ -23,6 +23,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    TableTab* getTableTab(int);
 
 public slots:
     void deviceTab_clicked(int);
