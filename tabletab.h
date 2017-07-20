@@ -14,6 +14,8 @@ class TableTab : public Tab
 public:
     TableTab(QObject *parent = nullptr);
     void insertRowTable();
+    QTableWidget* getTableWidget();
+
 protected:
     QLabel tableLabel;
 

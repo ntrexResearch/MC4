@@ -14,6 +14,8 @@
 #include "table8tab.h"
 #include "table9tab.h"
 #include "table10tab.h"
+#include <QDebug>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -71,7 +73,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->controlTabWidget->addTab(jogTab->getWidget(), "Jog");
     ui->controlTabWidget->addTab(motionTab->getWidget(), "Motion");
 
-
+    //Emit signal when button is clicked
+    QObject::connect(tableButtonGrid, SIGNAL(updateTable(int)), this, SLOT(updateTable(int)));
     QObject::connect(ui->deviceTabWidget, SIGNAL(tabBarClicked(int)), this, SLOT(deviceTab_clicked(int)));
     QObject::connect(connectionTab, SIGNAL(updateAxisTab(QList<char>)), this, SLOT(updateAxisTab(QList<char>)));
     QObject::connect(connectionTab, SIGNAL(updateDigitalIOTab(QList<uint32_t>)), this, SLOT(updateDigitalIOTab(QList<uint32_t>)));
@@ -127,9 +130,35 @@ void MainWindow::updatePollingData(QList<uint32_t> polData)
     dioTab->refreshStatus(polData[9]);
 }
 
-TableTab* MainWindow::getTableTab(int id){
-   if(id < 0 || id > 10)
-       return nullptr;
-   else
-       return tableTab[id];
- }
+void MainWindow::updateTable(int button_id)
+{\
+    switch(button_id)
+    {
+    case 0://save
+        qDebug()<<"save clicked";
+        break;
+    case 1://load
+        qDebug()<<"load clicked";
+        break;
+
+    case 2://up
+        //ui->tableTabWidget->currentWidget()->
+        //up // track the current_index
+        //tableTab[currentTabIndex]->getTableWidget()->setCurrentCell(2,1);
+        tableTab[currentTabIndex]->getTableWidget()->setFocus();
+        tableTab[currentTabIndex]->getTableWidget()->selectRow(
+                    tableTab[currentTabIndex]->getTableWidget()->currentRow()-1);
+                //->setItem(0,0, new QTableWidgetItem("Hello"));//->setCurrentCell(2,1);
+        qDebug()<<"up clicked";
+        break;
+    case 3://down
+        qDebug()<<"down clicked";
+        tableTab[currentTabIndex]->getTableWidget()->setFocus();
+        tableTab[currentTabIndex]->getTableWidget()->selectRow(
+                    tableTab[currentTabIndex]->getTableWidget()->currentRow()+1);
+        break;
+    default:
+        break;
+    }
+}
+

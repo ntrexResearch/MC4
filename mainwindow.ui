@@ -111,11 +111,11 @@
            <property name="spacing">
             <number>0</number>
            </property>
-           <item row="0" column="1">
-            <widget class="QTabWidget" name="tableTabWidget"/>
-           </item>
            <item row="1" column="1">
             <widget class="QWidget" name="tableButtonWidget" native="true"/>
+           </item>
+           <item row="0" column="1">
+            <widget class="QTabWidget" name="tableTabWidget"/>
            </item>
           </layout>
          </widget>
