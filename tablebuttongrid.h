@@ -6,7 +6,8 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QButtonGroup>
-
+#include <QProgressBar>
+#include "tabletab.h"
 
 class TableButtonGrid : public QObject
 {
@@ -17,10 +18,23 @@ public:
     QGridLayout* getGridLayout();
 
 private:
-//QButtonGroup tableButtonGroup;
+    QButtonGroup tableButtonGroup;
     QGridLayout gridLayout;
-
     QPushButton upPushButton;
+    QPushButton downPushButton;
+//    QPushButton addPushButton;
+    QProgressBar saveProgressBar;
+    QPushButton loadPushButton;
+    QPushButton savePushButton;
+    TableTab* tableTab[10];
+
+
+signals:
+    void updateTable(int);
+
+public slots:
+     void tableButton_released(int);
+
 };
 
 #endif // TABLEBUTTONGRID_H

@@ -38,7 +38,6 @@ SOURCES += \
     axistab.cpp \
     motiontab.cpp \
     controlstatusgrid.cpp \
-    table1tab.cpp \
     tabletab.cpp \
     table2tab.cpp \
     table3tab.cpp \
@@ -49,7 +48,8 @@ SOURCES += \
     table8tab.cpp \
     table9tab.cpp \
     table10tab.cpp \
-    tablebuttongrid.cpp
+    tablebuttongrid.cpp \
+    table1tab.cpp
 
 HEADERS += \
         mainwindow.h \

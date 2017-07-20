@@ -1,5 +1,8 @@
 #include "tabletab.h"
 #include <QGraphicsDropShadowEffect>
+#include <QDebug>
+#include "tablebuttongrid.h"
+
 
 TableTab::TableTab(QObject *parent) : Tab(parent)
 {
@@ -7,8 +10,12 @@ TableTab::TableTab(QObject *parent) : Tab(parent)
 
     gcodeTableWidget.setRowCount(5);
     gcodeTableWidget.setColumnCount(1);
-    gcodeTableWidget.setItem(0,0, new QTableWidgetItem("Hello"));
+    const QStringList header = QStringList()<<"  ";
+    //const QString header = " ";
+    gcodeTableWidget.setHorizontalHeaderLabels(header);
+    // gcodeTableWidget.setItem(0,0, new QTableWidgetItem("Hello"));
     gcodeTableWidget.setColumnWidth(0,500);//For now
+    gcodeTableWidget.setSelectionBehavior(QAbstractItemView::SelectRows);
     tableLabel.setFixedSize(60,60);
     tableLabel.setAlignment(Qt::AlignCenter);
     tableLabel.setGraphicsEffect(gdse);
@@ -19,3 +26,13 @@ TableTab::TableTab(QObject *parent) : Tab(parent)
 }
 
 
+void TableTab::insertRowTable(){
+    gcodeTableWidget.insertRow(gcodeTableWidget.rowCount());
+
+    gcodeTableWidget.setItem(0,0, new QTableWidgetItem("Hello"));
+}
+
+QTableWidget* TableTab::getTableWidget()
+{
+    return &gcodeTableWidget;
+}

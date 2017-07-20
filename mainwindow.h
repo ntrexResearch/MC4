@@ -29,6 +29,7 @@ public slots:
     void updateAxisTab(QList<char>);
     void updateDigitalIOTab(QList<uint32_t>);
     void updatePollingData(QList<uint32_t>);
+    void updateTable(int);
 
 private:
     ConnectionTab* connectionTab;
@@ -40,7 +41,7 @@ private:
     JogTab* jogTab;
     MotionTab* motionTab;
     TableTab* tableTab[10];
-
+    int currentTabIndex = 0;
     Ui::MainWindow *ui;
 };
 
