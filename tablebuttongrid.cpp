@@ -51,9 +51,9 @@ TableButtonGrid::TableButtonGrid(QObject *parent) : QObject(parent)
 
     gridLayout.addWidget(&savePushButton,0,0);
     gridLayout.addWidget(&loadPushButton, 0, 1);
-    gridLayout.addWidget(&saveProgressBar, 0, 2);
-    gridLayout.addWidget(&upPushButton, 0, 3);
-    gridLayout.addWidget(&downPushButton, 0, 4);
+    gridLayout.addWidget(&saveProgressBar, 0, 2, 1, 2);
+    gridLayout.addWidget(&upPushButton, 0, 4);
+    gridLayout.addWidget(&downPushButton, 0, 5);
 
     connect(&tableButtonGroup, SIGNAL(buttonReleased(int)),  this, SLOT(tableButton_released(int)));
 

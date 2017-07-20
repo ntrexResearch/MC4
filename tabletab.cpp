@@ -1,12 +1,10 @@
 #include "tabletab.h"
-#include <QGraphicsDropShadowEffect>
 #include <QDebug>
 #include "tablebuttongrid.h"
 
 
 TableTab::TableTab(QObject *parent) : Tab(parent)
 {
-    QGraphicsDropShadowEffect* gdse = new QGraphicsDropShadowEffect();
 
     gcodeTableWidget.setRowCount(5);
     gcodeTableWidget.setColumnCount(1);
@@ -18,7 +16,6 @@ TableTab::TableTab(QObject *parent) : Tab(parent)
     gcodeTableWidget.setSelectionBehavior(QAbstractItemView::SelectRows);
     tableLabel.setFixedSize(60,60);
     tableLabel.setAlignment(Qt::AlignCenter);
-    tableLabel.setGraphicsEffect(gdse);
 
     gridLayout.addWidget(&gcodeTableWidget,0,0);
 

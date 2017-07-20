@@ -21,8 +21,6 @@ protected:
 
 private:
     QTableWidget gcodeTableWidget;
-
-
     const int Table_Size = 2000;
 };
 

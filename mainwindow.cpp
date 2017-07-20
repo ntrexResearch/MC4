@@ -48,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
     tableTab[7] = new Table8Tab(ui->tableTabWidget);
     tableTab[8] = new Table9Tab(ui->tableTabWidget);
     tableTab[9] = new Table10Tab(ui->tableTabWidget);
+    editorMotionTab = new EditorMotionTab(ui->editorTabWidget);
 
     ui->deviceTabWidget->addTab(connectionTab->getWidget(), "Connection");
     ui->deviceTabWidget->addTab(axisTab[0]->getWidget(), "X");
@@ -66,6 +67,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableTabWidget->addTab(tableTab[7]->getWidget(),"8");
     ui->tableTabWidget->addTab(tableTab[8]->getWidget(),"9");
     ui->tableTabWidget->addTab(tableTab[9]->getWidget(),"10");
+    ui->editorTabWidget->addTab(editorMotionTab->getWidget(),"Motion");
 
     ui->tableButtonWidget->setLayout(tableButtonGrid->getGridLayout());
 
@@ -162,3 +164,9 @@ void MainWindow::updateTable(int button_id)
     }
 }
 
+
+void MainWindow::on_tableTabWidget_tabBarClicked(int index)
+{
+    //Track the active table tab
+    currentTabIndex = index;
+}

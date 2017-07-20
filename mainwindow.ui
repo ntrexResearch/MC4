@@ -87,6 +87,9 @@
            <item row="0" column="0">
             <widget class="QTabWidget" name="editorTabWidget"/>
            </item>
+           <item row="1" column="0">
+            <widget class="QWidget" name="tableButtonWidget_2" native="true"/>
+           </item>
           </layout>
          </widget>
         </item>

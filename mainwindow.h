@@ -9,8 +9,10 @@
 #include "jogtab.h"
 #include "motiontab.h"
 #include "tabletab.h"
+#include "editormotiontab.h"
 #include "controlstatusgrid.h"
 #include "tablebuttongrid.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -31,6 +33,9 @@ public slots:
     void updatePollingData(QList<uint32_t>);
     void updateTable(int);
 
+private slots:
+    void on_tableTabWidget_tabBarClicked(int index);
+
 private:
     ConnectionTab* connectionTab;
     AxisTab* axisTab[4];
@@ -40,6 +45,7 @@ private:
     TableButtonGrid* tableButtonGrid;
     JogTab* jogTab;
     MotionTab* motionTab;
+    EditorMotionTab* editorMotionTab;
     TableTab* tableTab[10];
     int currentTabIndex = 0;
     Ui::MainWindow *ui;
