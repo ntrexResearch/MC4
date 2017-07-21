@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     tableButtonGrid = new TableButtonGrid(ui->tableTabWidget);
 
     editorMotionTab = new EditorTab(ui->editorTabWidget);
-   // editorButtonGrid = new EditorButtonGrid(ui->editorButtonWidget);
+    //editorButtonGrid = new EditorButtonGrid(ui->editorButtonWidget);
 
     ui->deviceTabWidget->addTab(connectionTab->getWidget(), "Connection");
     ui->deviceTabWidget->addTab(axisTab[0]->getWidget(), "X");
@@ -72,10 +72,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableTabWidget->addTab(tableTab[7]->getWidget(),"8");
     ui->tableTabWidget->addTab(tableTab[8]->getWidget(),"9");
     ui->tableTabWidget->addTab(tableTab[9]->getWidget(),"10");
-//    ui->tableButtonWidget->setLayout(tableButtonGrid->getGridLayout());
+    ui->tableButtonWidget->setLayout(tableButtonGrid->getGridLayout());
 
     ui->editorTabWidget->addTab(editorMotionTab->getWidget(),"Motion");
-    ui->editorButtonWidget->setLayout(editorButtonGrid->getGridLayout());
+    //ui->editorButtonWidget->setLayout(editorButtonGrid->getGridLayout());
 
     ui->controlStatusWidget->setLayout(controlStatusGrid->getGridLayout());
     ui->controlTabWidget->addTab(jogTab->getWidget(), "Jog");
@@ -83,7 +83,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Emit signal when button is clicked
     QObject::connect(tableButtonGrid, SIGNAL(tableButtonClicked(int)), this, SLOT(tableButtonClicked(int)));
-    QObject::connect(editorButtonGrid, SIGNAL(editorButtonClicked(int)), this, SLOT(editorButtonClicked(int)));
+//    QObject::connect(editorButtonGrid, SIGNAL(editorButtonClicked(int)), this, SLOT(editorButtonClicked(int)));
     QObject::connect(ui->deviceTabWidget, SIGNAL(tabBarClicked(int)), this, SLOT(deviceTab_clicked(int)));
     QObject::connect(connectionTab, SIGNAL(updateAxisTab(QList<char>)), this, SLOT(updateAxisTab(QList<char>)));
     QObject::connect(connectionTab, SIGNAL(updateDigitalIOTab(QList<uint32_t>)), this, SLOT(updateDigitalIOTab(QList<uint32_t>)));
@@ -169,31 +169,31 @@ void MainWindow::tableButtonClicked(int button_id)
 
 void MainWindow::editorButtonClicked(int button_id)
 {
-    switch(button_id)
-    {
-    case 0:
-        qDebug() << "add clicked";
-        tableTab[currentTabIndex]-> getTableWidget()-> setFocus();
-        if(tableTab[currentTabIndex]-> getTableWidget()-> rowCount() < TableTab::getMaxTableSize())
-            tableTab[currentTabIndex]-> getTableWidget()-> insertRow(
-                    tableTab[currentTabIndex]-> getTableWidget()-> rowCount());
-        else
-            break;
-        break;
-    case 1:
-        qDebug() << "insert clicked";
-        tableTab[currentTabIndex]->getTableWidget()->setFocus();
-        if(tableTab[currentTabIndex]-> getTableWidget()-> rowCount() < TableTab::getMaxTableSize())
-            tableTab[currentTabIndex]->getTableWidget()->insertRow(
-                    tableTab[currentTabIndex]-> getTableWidget()-> currentRow()+1);
-        else
-            break;
-        break;
+//    switch(button_id)
+//    {
+//    case 0:
+//        qDebug() << "add clicked";
+//        tableTab[currentTabIndex]-> getTableWidget()-> setFocus();
+//        if(tableTab[currentTabIndex]-> getTableWidget()-> rowCount() < TableTab::getMaxTableSize())
+//            tableTab[currentTabIndex]-> getTableWidget()-> insertRow(
+//                    tableTab[currentTabIndex]-> getTableWidget()-> rowCount());
+//        else
+//            break;
+//        break;
+//    case 1:
+//        qDebug() << "insert clicked";
+//        tableTab[currentTabIndex]->getTableWidget()->setFocus();
+//        if(tableTab[currentTabIndex]-> getTableWidget()-> rowCount() < TableTab::getMaxTableSize())
+//            tableTab[currentTabIndex]->getTableWidget()->insertRow(
+//                    tableTab[currentTabIndex]-> getTableWidget()-> currentRow()+1);
+//        else
+//            break;
+//        break;
 
-    default:
-        break;
+//    default:
+//        break;
 
-    }
+//    }
 }
 
 void MainWindow::on_tableTabWidget_tabBarClicked(int index)
