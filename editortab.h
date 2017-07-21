@@ -38,6 +38,7 @@ private:
 
     //Single Group Box
     QGroupBox singleGroupBox;
+    QGridLayout singleGridLayout;
     QLineEdit singleLineEdits[4];
     QComboBox singleComboBox[4];
     QLabel singleAxisLabels[4];
@@ -76,12 +77,17 @@ private:
     //Initialize action group box
     void initActionGroupBox();
 
+    //Initialize single group box
+    void initSingleGroupBox();
+
     //Initialize motion group box
     void initOptionComboBox();
     void initOffset1GroupBox();
     void initOffset2GroupBox();
     void initRadiusGroupBox();
     void initBlendGroupBox();
+
+    void handleSelectionChanged(int);
 
 };
 

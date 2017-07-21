@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     tableButtonGrid = new TableButtonGrid(ui->tableTabWidget);
 
     editorMotionTab = new EditorTab(ui->editorTabWidget);
-    editorButtonGrid = new EditorButtonGrid(ui->editorButtonWidget);
+   // editorButtonGrid = new EditorButtonGrid(ui->editorButtonWidget);
 
     ui->deviceTabWidget->addTab(connectionTab->getWidget(), "Connection");
     ui->deviceTabWidget->addTab(axisTab[0]->getWidget(), "X");
@@ -72,7 +72,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableTabWidget->addTab(tableTab[7]->getWidget(),"8");
     ui->tableTabWidget->addTab(tableTab[8]->getWidget(),"9");
     ui->tableTabWidget->addTab(tableTab[9]->getWidget(),"10");
-    ui->tableButtonWidget->setLayout(tableButtonGrid->getGridLayout());
+//    ui->tableButtonWidget->setLayout(tableButtonGrid->getGridLayout());
 
     ui->editorTabWidget->addTab(editorMotionTab->getWidget(),"Motion");
     ui->editorButtonWidget->setLayout(editorButtonGrid->getGridLayout());

@@ -7,6 +7,7 @@ EditorTab::EditorTab(QObject *parent) : Tab(parent)
     //Initialize parameter group box
     initParameterGroupBox();
     initActionGroupBox();
+    initSingleGroupBox();
         //Initialize motion group box
 //    initOptionComboBox();
 //    initOffset1GroupBox();
@@ -16,10 +17,11 @@ EditorTab::EditorTab(QObject *parent) : Tab(parent)
 
     gridLayout.addWidget(&parameterGroupBox, 0, 0, Qt::AlignLeft);
     gridLayout.addWidget(&actionGroupBox, 0, 1);
+    gridLayout.addWidget(&singleGroupBox, 1, 0);
     //gridLayout.addWidget(&motionOffset1GroupBox, 0, 2, 2, 4, Qt::AlignTop);
     //gridLayout.addWidget(&motionOffset2GroupBox, 0, 6, 2, 4, Qt::AlignTop);
     widget.setLayout(&gridLayout);
-
+    //connect(&actionTypeComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(handleSelectionChanged(int)));
 }
 
 //Parameter Group
@@ -49,31 +51,33 @@ void EditorTab::initParameterGroupBox()
 void EditorTab::initActionGroupBox()
 {
     actionUnitLabels[0].setText("ms");
-    actionUnitLabels[1].setText("dd");
+    actionUnitLabels[1].setText("#");
     actionUnitLabels[2].setText("step");
     actionUnitLabels[3].setText("port");
     actionUnitLabels[4].setText("count");
-
+    actionTypeComboBox.setFixedWidth(60);
     actionUnitLabels[1].setAlignment(Qt::AlignRight);
+
     for(int i = 0; i<5; i++){
         actionLineEdits[i].setFixedWidth(60);
         actionLineEdits[i].setAlignment(Qt::AlignRight);
-        actionUnitLabels[i].setFixedWidth(30);
+        //actionUnitLabels[i].setFixedWidth(30);
     }
+    //actionUnitLabels[4].setFixedWidth(33);
 
     QStringList actionTypeStringList = QStringList() << "Delay" << "Jump" << "Input" <<"Output"
                                                      << "Loop" << "End";
 
     actionTypeComboBox.addItems(actionTypeStringList);
 
-    actionGridLayout.addWidget(&actionTypeComboBox, 0, 0, 1, 4);
+    actionGridLayout.addWidget(&actionTypeComboBox, 0, 0, 1, 4, Qt::AlignLeft);
 
-    actionGridLayout.addWidget(&actionLineEdits[0], 0, 4, 1, 3);
-    actionGridLayout.addWidget(&actionUnitLabels[0], 0, 8);
+    actionGridLayout.addWidget(&actionLineEdits[0], 0, 5, 1, 4);
+    actionGridLayout.addWidget(&actionUnitLabels[0], 0, 10, 1, 2);
     //# unit
-    actionGridLayout.addWidget(&actionUnitLabels[1], 0, 9);
-    actionGridLayout.addWidget(&actionLineEdits[1], 0, 10, 1, 3);
-    actionGridLayout.addWidget(&actionUnitLabels[2], 0, 13);
+    //actionGridLayout.addWidget(&actionUnitLabels[1], 0, 12, 1, 1);
+    actionGridLayout.addWidget(&actionLineEdits[1], 0, 13, 1, 4);
+    actionGridLayout.addWidget(&actionUnitLabels[2], 0, 17, 1, 2);
 
     actionGridLayout.addWidget(&actionLineEdits[2], 1, 4, 1, 3);
     //Port
@@ -86,12 +90,32 @@ void EditorTab::initActionGroupBox()
     actionGridLayout.addWidget(&actionUnitLabels[4], 2, 8);
 
 
-    actionGroupBox.setFixedSize(270, 130);
+    actionGroupBox.setFixedSize(290, 110);
     actionGroupBox.setTitle("Action");
     actionGroupBox.setLayout(&actionGridLayout);
 
 
 
+
+}
+
+//Single Group
+void EditorTab::initSingleGroupBox()
+{
+    singleAxisLabels[0].setText("X");
+    singleAxisLabels[1].setText("Y");
+    singleAxisLabels[2].setText("Z");
+    singleAxisLabels[3].setText("H");
+    for (int i = 0; i<4; i++){
+        singleLineEdits[i].setFixedWidth(70);
+        singleComboBox[i].setFixedWidth(70);
+        singleGridLayout.addWidget(&singleAxisLabels[i], i, 0);
+        singleGridLayout.addWidget(&singleLineEdits[i], i, 1, 1, 2);
+        singleGridLayout.addWidget(&singleComboBox[i], i, 3, 1, 2);
+        }
+    singleGroupBox.setFixedSize(220, 130);
+    singleGroupBox.setTitle("Single");
+    singleGroupBox.setLayout(&singleGridLayout);
 
 }
 
@@ -188,4 +212,9 @@ void EditorTab::initBlendGroupBox()
     gridLayout.addWidget(&motionBlendLabel, 2, 6, 1, 1, Qt::AlignRight);
     gridLayout.addWidget(&motionBlendSpinBox, 2, 7, 1, 2);
 
+}
+
+void EditorTab::handleSelectionChanged(int index)
+{
+    //Whe the combobox's index is changed
 }
