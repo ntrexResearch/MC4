@@ -26,7 +26,8 @@ private:
     QGridLayout parameterGridLayout;
     QLineEdit parameterLineEdits[4];
     QComboBox profileComboBox;
-    QLabel parameterLabels[6];
+    QLabel parameterLabels[4];
+    QLabel parameterUnitLabels[4];
 
     //Action Group Box
     QGroupBox actionGroupBox;
@@ -46,8 +47,8 @@ private:
 
     //Motion Group Box
     QGroupBox motionGroupBox;
+    QGridLayout motionGridLayout;
     QComboBox motionOptionComboBox;
-    QLabel motionOptionLabel;
 
     QGroupBox motionOffset1GroupBox;
     QGridLayout motionOffset1GridLayout;
@@ -81,11 +82,9 @@ private:
     void initSingleGroupBox();
 
     //Initialize motion group box
-    void initOptionComboBox();
+    void initMotionGroupBox();
     void initOffset1GroupBox();
     void initOffset2GroupBox();
-    void initRadiusGroupBox();
-    void initBlendGroupBox();
 
     void handleSelectionChanged(int);
 
