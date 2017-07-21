@@ -63,36 +63,6 @@
         <property name="verticalSpacing">
          <number>10</number>
         </property>
-        <item row="2" column="0">
-         <widget class="QGroupBox" name="editorGroupBox">
-          <property name="title">
-           <string>Editor</string>
-          </property>
-          <layout class="QGridLayout" name="editorGridLayout">
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>5</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item row="0" column="0">
-            <widget class="QTabWidget" name="editorTabWidget"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QWidget" name="tableButtonWidget_2" native="true"/>
-           </item>
-          </layout>
-         </widget>
-        </item>
         <item row="0" column="0">
          <widget class="QGroupBox" name="tableGroupBox">
           <property name="title">
@@ -119,6 +89,36 @@
            </item>
            <item row="0" column="1">
             <widget class="QTabWidget" name="tableTabWidget"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QGroupBox" name="editorGroupBox">
+          <property name="title">
+           <string>Editor</string>
+          </property>
+          <layout class="QGridLayout" name="editorGridLayout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>5</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QTabWidget" name="editorTabWidget"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QWidget" name="editorButtonWidget" native="true"/>
            </item>
           </layout>
          </widget>

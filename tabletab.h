@@ -5,6 +5,7 @@
 #include <QTableWidget>
 #include <QGridLayout>
 #include <QLabel>
+#include <QTableWidgetItem>
 #include "tab.h"
 
 
@@ -15,13 +16,15 @@ public:
     TableTab(QObject *parent = nullptr);
     void insertRowTable();
     QTableWidget* getTableWidget();
+    static int getMaxTableSize();
 
 protected:
     QLabel tableLabel;
 
 private:
     QTableWidget gcodeTableWidget;
-    const int Table_Size = 2000;
+
+    static const int table_Size = 2000;
 };
 
 #endif // TABLETAB_H

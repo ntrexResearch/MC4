@@ -33,3 +33,8 @@ QTableWidget* TableTab::getTableWidget()
 {
     return &gcodeTableWidget;
 }
+
+int TableTab::getMaxTableSize()
+{
+    return table_Size;
+}
