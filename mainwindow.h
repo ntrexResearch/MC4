@@ -7,12 +7,11 @@
 #include "diotab.h"
 #include "monitortab.h"
 #include "jogtab.h"
-#include "motiontab.h"
+#include "controlmotiontab.h"
 #include "tabletab.h"
-#include "editortab.h"
+#include "editormotiontab.h"
 #include "controlstatusgrid.h"
 #include "tablebuttongrid.h"
-#include "editorbuttongrid.h"
 
 
 namespace Ui {
@@ -33,7 +32,7 @@ public slots:
     void updateDigitalIOTab(QList<uint32_t>);
     void updatePollingData(QList<uint32_t>);
     void tableButtonClicked(int);
-    void editorButtonClicked(int);
+    void editorButtonClicked(RowData);
 
 private slots:
     void on_tableTabWidget_tabBarClicked(int index);
@@ -45,10 +44,9 @@ private:
     MonitorTab* monitorTab;
     ControlStatusGrid* controlStatusGrid;
     TableButtonGrid* tableButtonGrid;
-    EditorButtonGrid* editorButtonGrid;
     JogTab* jogTab;
-    MotionTab* motionTab;
-    EditorTab* editorMotionTab;
+    ControlMotionTab* controlMotionTab;
+    EditorMotionTab* editorMotionTab;
     TableTab* tableTab[10];
     int currentTabIndex = 0;
     Ui::MainWindow *ui;

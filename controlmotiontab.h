@@ -1,5 +1,5 @@
-#ifndef MOTIONTAB_H
-#define MOTIONTAB_H
+#ifndef ControlMotionTab_H
+#define ControlMotionTab_H
 
 #include "tab.h"
 #include <QButtonGroup>
@@ -8,11 +8,11 @@
 #include <QLineEdit>
 #include <QDoubleSpinBox>
 
-class MotionTab : public Tab
+class ControlMotionTab : public Tab
 {
     Q_OBJECT
 public:
-    MotionTab(QObject *parent = nullptr);
+    ControlMotionTab(QObject *parent = nullptr);
 
 signals:
 
@@ -44,4 +44,4 @@ private:
     void initMotionGroupBox();
 };
 
-#endif // MOTIONTAB_H
+#endif // ControlMotionTab_H

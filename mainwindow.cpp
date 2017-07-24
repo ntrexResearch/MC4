@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    this->setGeometry(100,100,1090,880);
+    this->setGeometry(100,100,1120,880);
 
     ui->scrollArea->setGeometry(10,10,1072,809);
 
@@ -37,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
     controlStatusGrid = new ControlStatusGrid(ui->controlTabWidget);
 
     jogTab = new JogTab(ui->controlTabWidget);
-    motionTab = new MotionTab(ui->controlTabWidget);
+    controlMotionTab = new ControlMotionTab(ui->controlTabWidget);
 
     tableTab[0] = new Table1Tab(ui->tableTabWidget);
     tableTab[1] = new Table2Tab(ui->tableTabWidget);
@@ -50,9 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
     tableTab[8] = new Table9Tab(ui->tableTabWidget);
     tableTab[9] = new Table10Tab(ui->tableTabWidget);
     tableButtonGrid = new TableButtonGrid(ui->tableTabWidget);
-
-    editorMotionTab = new EditorTab(ui->editorTabWidget);
-    //editorButtonGrid = new EditorButtonGrid(ui->editorButtonWidget);
+    editorMotionTab = new EditorMotionTab(ui->editorTabWidget);
 
     ui->deviceTabWidget->addTab(connectionTab->getWidget(), "Connection");
     ui->deviceTabWidget->addTab(axisTab[0]->getWidget(), "X");
@@ -79,11 +77,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->controlStatusWidget->setLayout(controlStatusGrid->getGridLayout());
     ui->controlTabWidget->addTab(jogTab->getWidget(), "Jog");
-    ui->controlTabWidget->addTab(motionTab->getWidget(), "Motion");
+    ui->controlTabWidget->addTab(controlMotionTab->getWidget(), "Motion");
 
     //Emit signal when button is clicked
     QObject::connect(tableButtonGrid, SIGNAL(tableButtonClicked(int)), this, SLOT(tableButtonClicked(int)));
-//    QObject::connect(editorButtonGrid, SIGNAL(editorButtonClicked(int)), this, SLOT(editorButtonClicked(int)));
+    QObject::connect(editorMotionTab, SIGNAL(editorButtonClicked(RowData)), this, SLOT(editorButtonClicked(RowData)));
     QObject::connect(ui->deviceTabWidget, SIGNAL(tabBarClicked(int)), this, SLOT(deviceTab_clicked(int)));
     QObject::connect(connectionTab, SIGNAL(updateAxisTab(QList<char>)), this, SLOT(updateAxisTab(QList<char>)));
     QObject::connect(connectionTab, SIGNAL(updateDigitalIOTab(QList<uint32_t>)), this, SLOT(updateDigitalIOTab(QList<uint32_t>)));
@@ -167,27 +165,62 @@ void MainWindow::tableButtonClicked(int button_id)
     }
 }
 
-void MainWindow::editorButtonClicked(int button_id)
+void MainWindow::editorButtonClicked(RowData rowData)
 {
+    qDebug()<<rowData.getInstruction();
+    qDebug()<<rowData.getMode();
+    if (rowData.getMode() == 0)//add mode
+    {
+        tableTab[currentTabIndex]-> getTableWidget()-> setFocus();
+        if(tableTab[currentTabIndex]-> getTableWidget()-> rowCount() < TableTab::getMaxTableSize())
+            tableTab[currentTabIndex]-> getTableWidget()-> insertRow(
+                    tableTab[currentTabIndex]-> getTableWidget()-> rowCount());
+        tableTab[currentTabIndex]->getTableWidget()->setItem(
+                    tableTab[currentTabIndex]-> getTableWidget()-> rowCount()-1, 0,
+                    new QTableWidgetItem(rowData.getInstruction()));
+        tableTab[currentTabIndex]->getTableWidget()->setItem(
+                    tableTab[currentTabIndex]-> getTableWidget()-> rowCount()-1, 1,
+                    new QTableWidgetItem(rowData.getType()));
+        tableTab[currentTabIndex]->getTableWidget()->setCurrentCell(
+                    tableTab[currentTabIndex]->getTableWidget()->rowCount()-1, 0);
+    }
 //    switch(button_id)
 //    {
-//    case 0:
-//        qDebug() << "add clicked";
+
+//    case 0://
+//        qDebug() << "parameter add button clicked";
+
 //        tableTab[currentTabIndex]-> getTableWidget()-> setFocus();
 //        if(tableTab[currentTabIndex]-> getTableWidget()-> rowCount() < TableTab::getMaxTableSize())
 //            tableTab[currentTabIndex]-> getTableWidget()-> insertRow(
 //                    tableTab[currentTabIndex]-> getTableWidget()-> rowCount());
-//        else
-//            break;
+//        tableTab[currentTabIndex]->getTableWidget()->setItem(
+//                    tableTab[currentTabIndex]-> getTableWidget()-> rowCount()-1, 1, new QTableWidgetItem(rowData.getInstruction()));
 //        break;
 //    case 1:
-//        qDebug() << "insert clicked";
+//        qDebug() << "parameter insert button clicked";
 //        tableTab[currentTabIndex]->getTableWidget()->setFocus();
 //        if(tableTab[currentTabIndex]-> getTableWidget()-> rowCount() < TableTab::getMaxTableSize())
 //            tableTab[currentTabIndex]->getTableWidget()->insertRow(
 //                    tableTab[currentTabIndex]-> getTableWidget()-> currentRow()+1);
-//        else
-//            break;
+//        break;
+//    case 2:
+//        qDebug() << "single add button clicked";
+//        break;
+//    case 3:
+//        qDebug() << "single insert button clicked";
+//        break;
+//    case 4:
+//        qDebug() << "action add button clicked";
+//        break;
+//    case 5:
+//        qDebug() << "action insert button clicked";
+//        break;
+//    case 6:
+//        qDebug() << "motion add button clicked";
+//        break;
+//    case 7:
+//        qDebug() << "motion insert button clicked";
 //        break;
 
 //    default:
@@ -201,3 +234,5 @@ void MainWindow::on_tableTabWidget_tabBarClicked(int index)
     //Track the active table tab
     currentTabIndex = index;
 }
+
+//void MainWindow::

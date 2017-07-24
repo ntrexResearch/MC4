@@ -36,7 +36,6 @@ SOURCES += \
     zaxistab.cpp \
     haxistab.cpp \
     axistab.cpp \
-    motiontab.cpp \
     controlstatusgrid.cpp \
     tabletab.cpp \
     table2tab.cpp \
@@ -50,8 +49,8 @@ SOURCES += \
     table10tab.cpp \
     tablebuttongrid.cpp \
     table1tab.cpp \
-    editorbuttongrid.cpp \
-    editortab.cpp
+    editormotiontab.cpp \
+    controlmotiontab.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -65,7 +64,6 @@ HEADERS += \
     zaxistab.h \
     haxistab.h \
     axistab.h \
-    motiontab.h \
     controlstatusgrid.h \
     table1tab.h \
     tabletab.h \
@@ -79,8 +77,8 @@ HEADERS += \
     table9tab.h \
     table10tab.h \
     tablebuttongrid.h \
-    editorbuttongrid.h \
-    editortab.h
+    editormotiontab.h \
+    controlmotiontab.h
 
 FORMS += \
         mainwindow.ui

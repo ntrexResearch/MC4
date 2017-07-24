@@ -1,25 +1,37 @@
-#ifndef EditorTab_H
-#define EditorTab_H
+#ifndef EditorMotionTab_H
+#define EditorMotionTab_H
 
 #include "tab.h"
+#include "tabletab.h"
 #include <QWidget>
 #include <QGridLayout>
 #include <QLineEdit>
-#include <QSpinBox>
 #include <QGroupBox>
 #include <QLabel>
 #include <QComboBox>
 #include <QRadioButton>
+#include <QPushButton>
+#include <QButtonGroup>
+#include <QDoubleSpinBox>
 
-class EditorTab : public Tab
+class EditorMotionTab : public Tab
 {
     Q_OBJECT
 public:
-    EditorTab(QObject *parent = nullptr);
+    EditorMotionTab(QObject *parent = nullptr);
 
+public slots:
+    void handleSelectionChanged(int);
+    void editorButtonsReleased(int);
+
+signals:
+    //
+    void editorButtonClicked(RowData);
 private:
     static const int margin = 4;
     static const int space = 5;
+
+    QButtonGroup editorButtonGroup;
 
     //Parameter Group Box
     QGroupBox parameterGroupBox;
@@ -28,6 +40,8 @@ private:
     QComboBox profileComboBox;
     QLabel parameterLabels[4];
     QLabel parameterUnitLabels[4];
+    QPushButton parameterAddPushButton;
+    QPushButton parameterInsertPushButton;
 
     //Action Group Box
     QGroupBox actionGroupBox;
@@ -36,6 +50,8 @@ private:
     QLineEdit actionLineEdits[5];
     QLabel actionUnitLabels[5];
     QRadioButton actionRadioButton;
+    QPushButton actionAddPushButton;
+    QPushButton actionInsertPushButton;
 
     //Single Group Box
     QGroupBox singleGroupBox;
@@ -44,11 +60,15 @@ private:
     QComboBox singleComboBox[4];
     QLabel singleAxisLabels[4];
     QLabel singleUnitLabels[4];
+    QPushButton singleAddPushButton;
+    QPushButton singleInsertPushButton;
 
     //Motion Group Box
     QGroupBox motionGroupBox;
     QGridLayout motionGridLayout;
     QComboBox motionOptionComboBox;
+    QPushButton motionAddPushButton;
+    QPushButton motionInsertPushButton;
 
     QGroupBox motionOffset1GroupBox;
     QGridLayout motionOffset1GridLayout;
@@ -67,10 +87,8 @@ private:
     QLabel motionUnit3Label;
 
     QLabel motionBlendLabel;
-    QSpinBox motionBlendSpinBox;
+    QDoubleSpinBox motionBlendSpinBox;
     QLabel motionUnit4Label;
-
-
 
     //Initialize parameter group box
     void initParameterGroupBox();
@@ -86,7 +104,9 @@ private:
     void initOffset1GroupBox();
     void initOffset2GroupBox();
 
-    void handleSelectionChanged(int);
+    //Prepare instruction string for motion button
+    QString makeInstruction(QString);
+
 
 };
 

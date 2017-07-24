@@ -1,9 +1,9 @@
-#include "motiontab.h"
+#include "controlmotiontab.h"
 #include <QPushButton>
 #include "connectiontab.h"
 #include <QRadioButton>
 
-MotionTab::MotionTab(QObject *parent) : Tab(parent)
+ControlMotionTab::ControlMotionTab(QObject *parent) : Tab(parent)
 {
     initParamGroupBox();
     initMotionGroupBox();
@@ -15,7 +15,7 @@ MotionTab::MotionTab(QObject *parent) : Tab(parent)
     connect(&motionButtonGroup, SIGNAL(buttonClicked(int)), this, SLOT(motionButton_clicked(int)));
 }
 
-void MotionTab::motionButton_clicked(int button_id)
+void ControlMotionTab::motionButton_clicked(int button_id)
 {
     switch (button_id){
     case 0:
@@ -31,7 +31,7 @@ void MotionTab::motionButton_clicked(int button_id)
     }
 }
 
-void MotionTab::initParamGroupBox()
+void ControlMotionTab::initParamGroupBox()
 {
     for(int i = 0 ; i < 4; i++)
     {
@@ -63,7 +63,7 @@ void MotionTab::initParamGroupBox()
     gridLayout.addWidget(&paramGroupBox, 0, 0);
 }
 
-void MotionTab::initMotionGroupBox()
+void ControlMotionTab::initMotionGroupBox()
 {
     for (int i = 0; i < 4; i++)
     {
